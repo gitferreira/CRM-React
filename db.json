@@ -1,0 +1,28 @@
+{
+  "customers": [
+    {
+      "name": "Iñigo Ferreira Ruiz",
+      "organization": "SMART Technologies",
+      "email": "iniferre96@gmail.com",
+      "phone": "664069414",
+      "notes": "",
+      "id": 1
+    },
+    {
+      "name": "Jorge",
+      "organization": "MS Solutions",
+      "email": "jorge@hotmail.com",
+      "phone": "656789543",
+      "notes": "",
+      "id": 3
+    },
+    {
+      "name": "Gervasio",
+      "organization": "Metro Madrid",
+      "email": "Gervasio89@gmail.com",
+      "phone": "",
+      "notes": "",
+      "id": 4
+    }
+  ]
+}
