@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Alert from "./Alert";
 
-const CustomerForm = () => {
+const CustomerForm = ({customer}) => {
 
   const navigate = useNavigate()
 
