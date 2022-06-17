@@ -3,10 +3,10 @@ import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Alert from "./Alert";
+import Spinner from "./Spinner";
 
-const CustomerForm = ({customer}) => {
-
-  const navigate = useNavigate()
+const CustomerForm = ({ customer, loading }) => {
+  const navigate = useNavigate();
 
   const newCustomerSchema = Yup.object().shape({
     name: Yup.string()
@@ -24,35 +24,52 @@ const CustomerForm = ({customer}) => {
 
   const handleSubmit = async (values) => {
     try {
-      const url = "http://localhost:5000/customers";
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let response;
+      if (customer.id) {
+        //Edit Customer
+        const url = `http://localhost:5000/customers/${customer.id}`;
+        response = await fetch(url, {
+          method: "PUT",
+          body: JSON.stringify(values),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } else {
+        //New Customer
+        const url = "http://localhost:5000/customers";
+        response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(values),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
       const result = await response.json();
-      navigate('/customers')
-      console.log(result);
+      navigate("/customers");
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
       <h1 className="text-gray-600 font-bold text-xl uppercase text-center">
-        Add Customer
+        {customer?.name ? "Edit Customer" : "Add Customer"}
       </h1>
       <Formik
         initialValues={{
-          name: "",
-          organization: "",
-          email: "",
-          phone: "",
-          notes: "",
+          name: customer?.name ?? "",
+          organization: customer?.organization ?? "",
+          email: customer?.email ?? "",
+          phone: customer?.phone ?? "",
+          notes: customer?.notes ?? "",
         }}
+        enableReinitialize={true}
         onSubmit={async (values, { resetForm }) => {
           await handleSubmit(values);
           resetForm();
@@ -141,7 +158,7 @@ const CustomerForm = ({customer}) => {
               </div>
               <input
                 type="submit"
-                value="Add Customer"
+                value={customer?.name ? "Edit Customer" : "Add Customer"}
                 className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
               />
             </Form>
@@ -150,6 +167,11 @@ const CustomerForm = ({customer}) => {
       </Formik>
     </div>
   );
+};
+
+CustomerForm.defaultProps = {
+  customer: {},
+  loading: false,
 };
 
 export default CustomerForm;

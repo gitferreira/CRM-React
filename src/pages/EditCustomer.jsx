@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CustomerForm from '../components/CustomerForm';
+import CustomerForm from "../components/CustomerForm";
 
 const EditCustomer = () => {
   const [customer, setCustomer] = useState({});
@@ -17,20 +17,21 @@ const EditCustomer = () => {
       } catch (error) {
         console.log(error);
       }
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(!loading);
-      }, 1000)
-      
+      }, 1000);
     };
     obtainClientAPI();
   }, []);
   return (
     <>
-    <h1 className='font-black text-4xl text-blue-900 '>Edit Customer</h1>
-    <p className='mt-3 '>Fill out the following fields to edit an existing customer</p>
-    <CustomerForm customer = {customer} />
+      <h1 className="font-black text-4xl text-blue-900 ">Edit Customer</h1>
+      <p className="mt-3 ">
+        Fill out the following fields to edit an existing customer
+      </p>
+      {customer?.name ? <CustomerForm customer={customer} loading={loading} /> : "Customer ID is not valid."}
     </>
-  )
-}
+  );
+};
 
-export default EditCustomer
+export default EditCustomer;

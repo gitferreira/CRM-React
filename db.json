@@ -1,20 +1,12 @@
 {
   "customers": [
     {
-      "name": "Iñigo Ferreira Ruiz",
+      "name": "Iñigo Ferreira Ruiz 2",
       "organization": "SMART Technologies",
       "email": "iniferre96@gmail.com",
       "phone": "664069414",
       "notes": "",
       "id": 1
-    },
-    {
-      "name": "Jorge",
-      "organization": "MS Solutions",
-      "email": "jorge@hotmail.com",
-      "phone": "656789543",
-      "notes": "",
-      "id": 3
     },
     {
       "name": "Gervasio",
@@ -23,6 +15,30 @@
       "phone": "",
       "notes": "",
       "id": 4
+    },
+    {
+      "name": "Asier Gonzalez",
+      "organization": "MediaSmart",
+      "email": "asiergontz@gmail.com",
+      "phone": "5467484746",
+      "notes": "",
+      "id": 5
+    },
+    {
+      "name": "David del Campo",
+      "organization": "Smatttell",
+      "email": "david96@yahoo.es",
+      "phone": "",
+      "notes": "",
+      "id": 6
+    },
+    {
+      "name": "Maria Padilla",
+      "organization": "Smarttech",
+      "email": "mariapadilla@hotmail.es",
+      "phone": "676543453",
+      "notes": "Hello I'm Maria!",
+      "id": 7
     }
   ]
 }
