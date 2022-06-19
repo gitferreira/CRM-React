@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Customer from "../components/Customer";
 
 const Home = () => {
+
+ 
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     const getCustomersAPI = async () => {
       try {
-        const url = "http://localhost:5000/customers";
+        const url = import.meta.env.VITE_API_URL;
         const response = await fetch(url);
         const result = await response.json();
         setCustomers(result);
@@ -23,7 +25,7 @@ const Home = () => {
     const confirmation = confirm('Do you really want to delete this customer?')
     if(confirmation) {
       try {
-        const url = `http://localhost:5000/customers/${id}`
+        const url = `${import.meta.env.VITE_API_URL}/${id}`
         const response = await fetch(url, {
           method: "DELETE",
 

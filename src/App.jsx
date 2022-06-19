@@ -7,7 +7,7 @@ import EditCustomer from "./pages/EditCustomer";
 import InfoCustomer from "./pages/InfoCustomer";
 
 function App() {
-
+  console.log(import.meta.env)
 
   return (
     <BrowserRouter>
